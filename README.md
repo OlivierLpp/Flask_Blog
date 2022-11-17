@@ -1,7 +1,13 @@
 
 # About The Project
 
-Flask_Blog is a simple blog running on Flask. The Main features are : 
+
+Flask_Blog is a simple blog based on Bootstrap blog theme and running on a python web framework: Flask. It is perfect for personal or company blogs. It includes a blog index, an about page, post page, contact page and more.
+
+This blog support user authentification, login and registering.
+And also article creation, modification and deletion from sqlite database.
+
+The Main features are : 
 
 - Jinja for web templating
 - Navigation with RESTful routing 
