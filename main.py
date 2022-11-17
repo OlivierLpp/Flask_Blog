@@ -1,23 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
-
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
-
-from datetime import date
-import requests
-from utils import CreatePostForm, RegisterForm, LoginForm, CommentForm, send_email, admin_only
-
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-
 from flask_gravatar import Gravatar
 
+from utils import CreatePostForm, RegisterForm, LoginForm, CommentForm, send_email, admin_only
+from datetime import date
+from os import environ, path
+from dotenv import load_dotenv
 
+
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, '.env'))
 
 app = Flask(__name__ , template_folder='templates')
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -222,4 +222,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
-
